@@ -35,12 +35,18 @@ Criar uma ferramenta inteligente que:
    - checklist legal/documental;
    - controle de prazos e devoluções.
 
+6. **DCTFWeb em lote**
+   - envio em lote por competência e estabelecimento;
+   - captura automática do protocolo/recibo de transmissão;
+   - armazenamento do PDF/XML do recibo com trilha de auditoria.
+
 ## Componentes de inteligência
 
 - **Assistente conversacional interno** para tirar dúvidas de processo e orientar o próximo passo.
 - **Motor de regras** para validações obrigatórias (ex.: campos faltantes, prazos vencendo).
 - **Priorização automática** de atividades por urgência e impacto.
 - **Geração de mensagens prontas** (e-mail/WhatsApp/Teams) para cobrança de documentos e aprovações.
+- **Esteira fiscal inteligente** para transmissão da DCTFWeb em lote e emissão de recibos por CNPJ/competência.
 
 ## Fluxo sugerido de uso
 
@@ -48,6 +54,7 @@ Criar uma ferramenta inteligente que:
 2. O sistema apresenta pendências críticas e tarefas recomendadas.
 3. O profissional executa as ações sugeridas com um clique.
 4. O assistente registra o andamento e agenda próximos lembretes.
+5. No fechamento fiscal, o sistema transmite a DCTFWeb em lote e anexa os recibos automaticamente.
 
 ## MVP em 30 dias
 
@@ -88,3 +95,28 @@ Se quiser, posso evoluir este projeto para:
 - um **backlog técnico** (histórias de usuário);
 - um **modelo de dados** inicial;
 - um **roteiro de implementação com stack sugerida**.
+
+## Requisito específico: recibo de transmissão da DCTFWeb em lote
+
+Para atender sua necessidade, o MVP deve incluir obrigatoriamente:
+
+- seleção em massa de empresas/filiais e competência de apuração;
+- fila de transmissão com status (pendente, enviado, erro, concluído);
+- emissão e download do recibo de transmissão para cada envio concluído;
+- reprocessamento automático de itens com falha;
+- exportação consolidada (ZIP) com todos os recibos da competência.
+
+### Dados mínimos por recibo
+
+- CNPJ do contribuinte;
+- competência (MM/AAAA);
+- número do protocolo/recibo;
+- data e hora da transmissão;
+- usuário/responsável pelo envio;
+- hash ou identificador do arquivo salvo para auditoria.
+
+### Indicadores adicionais para esse módulo
+
+- taxa de transmissões concluídas em 1ª tentativa;
+- tempo médio de processamento por lote;
+- percentual de recibos arquivados automaticamente sem intervenção manual.
