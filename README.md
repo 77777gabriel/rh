@@ -120,3 +120,25 @@ Para atender sua necessidade, o MVP deve incluir obrigatoriamente:
 - taxa de transmissões concluídas em 1ª tentativa;
 - tempo médio de processamento por lote;
 - percentual de recibos arquivados automaticamente sem intervenção manual.
+
+## Implementação inicial (CLI)
+
+Foi adicionada uma implementação inicial em Python no diretório `app/` com foco no módulo de DCTFWeb em lote:
+
+- `create-batch`: cria lote por competência e lista de CNPJs;
+- `process-batch`: processa transmissão e gera recibos para itens concluídos;
+- `reprocess-errors`: reprocessa itens que falharam;
+- `export-receipts`: exporta recibos gerados para ZIP;
+- `list-batches`: lista lotes e status.
+
+### Como usar
+
+```bash
+python -m app.cli create-batch --competencia 03-2026 --user ana --cnpjs 11111111000191 22222222000191
+python -m app.cli list-batches
+python -m app.cli process-batch --batch-id <BATCH_ID> --user ana
+python -m app.cli reprocess-errors --batch-id <BATCH_ID> --user ana
+python -m app.cli export-receipts --batch-id <BATCH_ID>
+```
+
+Os dados de lotes são persistidos em `data/batches.json` e os recibos em `receipts/`.

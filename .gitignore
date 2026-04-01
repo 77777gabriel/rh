@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/batches.json
+receipts/*.json
+receipts/*.zip
